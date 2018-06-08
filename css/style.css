@@ -5,12 +5,24 @@ body {
 
 #container {
   display: grid;
+  background-image: url(/img/pexels-photo-459480.jpeg);
+  background-size: cover;
+  height: 100%;
+  
 }
 
 /* HEADER */
 
 #titleContainer {
   text-align: center;
+  background-image: url(/img/wood-tree-grain-fallen.jpg);
+  background-size: cover;
+}
+
+h1 {
+  font-family: 'Pinewood';
+  font-size: 3em;
+  font-weight: 100;
 }
 
 /* BEERS */
@@ -21,10 +33,13 @@ body {
   grid-template-rows: 1fr 1fr;
   width: 100vw;
   height: 25vh;
-  background-color: gainsboro;
 }
 
-.beer1 {
+.beer {
+  border: solid white;
+}
+
+/* .beer1 {
   background-image: url(/img/elhefe.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -82,6 +97,28 @@ body {
   background-image: url(/img/steampunk.png);
   background-size: contain;
   background-repeat: no-repeat;
+} */
+
+/* BEER MODAL */
+
+#beerModal {
+  position: absolute;
+  background-color: white;
+  z-index: 10;
+  width: 100vw;
+  height: 130vh;
+  display: none;
+}
+
+#close {
+  position: fixed;
+  top: 1%;
+  left: 90%;
+  font-size: 2em;
+  font-family: Arial;
+  font-weight: bolder;
+  padding: 0;
+  margin: 0;
 }
 
 /* QUEUE & SERVING */
@@ -89,10 +126,26 @@ body {
 #queueContainer, #serveContainer {
   display: flex;
   justify-content: space-evenly;
+  text-align: center;
+  background-color: #FFFFFF80;
+  width: 80vw;
+  margin: 2vw 10vw;
+  padding-bottom: 6vw;
 }
 
-#queue, #orderList, #served, #serveList, #bartenderContainer {
+#bartenderContainer {
+  display: grid;
   text-align: center;
+  background-color: #FFFFFF80;
+  width: 80vw;
+  margin: 3vw 10vw;
+}
+
+#queue, #served {
+  font-size: 3em;
+  background-color: #FFF;
+  border-radius: 100px;
+  padding: 15%;
 }
 
 /* MEDIA QUERIES */
