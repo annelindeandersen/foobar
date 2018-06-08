@@ -3,7 +3,109 @@ body {
   padding: 0;
   border: saddlebrown; }
 
-h1 {
-  color: aquamarine; }
+#container {
+  display: grid;
+}
 
-/*# sourceMappingURL=style.css.map */
+/* HEADER */
+
+#titleContainer {
+  text-align: center;
+}
+
+/* BEERS */
+
+#beerContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 100vw;
+  height: 25vh;
+  background-color: gainsboro;
+}
+
+.beer1 {
+  background-image: url(/img/elhefe.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.beer2 {
+  background-image: url(/img/fairytaleale.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.beer3 {
+  background-image: url(/img/githop.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.beer4 {
+  background-image: url(/img/hollaback.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.beer5 {
+  background-image: url(/img/hoppilyeverafter.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.beer6 {
+  background-image: url(/img/mowintime.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.beer7 {
+  background-image: url(/img/row26.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.beer8 {
+  background-image: url(/img/ruinedchildhood.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.beer9 {
+  background-image: url(/img/sleighride.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.beer10 {
+  background-image: url(/img/steampunk.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* QUEUE & SERVING */
+
+#queueContainer, #serveContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#queue, #orderList, #served, #serveList, #bartenderContainer {
+  text-align: center;
+}
+
+/* MEDIA QUERIES */
+
+  @media screen and (min-width: 1024px) {
+    #container {
+      display: grid;
+      /* grid-template-columns: 12fr; */
+    }
+    #beerContainer {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+  }
+
+
