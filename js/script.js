@@ -3,15 +3,63 @@
 let data;
 let jsonData;
 let i;
-let beerClone;
+let beerTypes;
+let beerNavn;
+let beerCat;
+let beerPop;
+let beerAlc;
+let beerImg;
+let beerFlava;
+let beerFeel;
+let beerImpress;
 
 async function beerLoad() {
     data = FooBar.getData();
     jsonData = JSON.parse(data);
-    beerClone = jsonData.beertypes;
-    let container = document.querySelector("#beerModal");
-    // container = beerClone.cloneNode(true);
-    console.log(beerClone);
+    // store beertypes in variable
+    beerTypes = jsonData.beertypes;
+    
+    console.log(beerTypes);
+
+    // make clone foreach to dislay json for each element
+    beerTypes.forEach(element => {
+        let template = document.querySelector("template");
+
+        //clone templates content
+        let clone = template.content.cloneNode(true);
+        console.log(clone);
+
+        // make for loop for all beertypes??
+
+        for (let i = 0; i < beerTypes.length; i++) {
+            let beerNavn = beerTypes[i].name;
+            // console.log(beerNavn);
+            let beerCat = beerTypes[i].category;
+            let beerPop = beerTypes[i].popularity;
+            let beerAlc = beerTypes[i].alc;
+            let beerImg = beerTypes[i].label;
+            let beerFlava = beerTypes[i].description.flavor;
+            let beerFeel = beerTypes[i].description.mouthfeel;
+            let beerImpress = beerTypes[i].description.overallImpression;
+
+            clone.querySelector("#beerName").textContent = beerNavn;
+            console.log(beerNavn);
+            clone.querySelector("#beerImg").src = "/img/" + beerImg;
+            clone.querySelector("#beerCat").textContent = "Beer Type: " + beerCat;
+            clone.querySelector("#beerPopular").textContent = "Popularity: " + beerPop;
+            clone.querySelector("#beerAlc").textContent = "Alcohol Percentage: " + beerAlc + "%";
+            clone.querySelector("#beerFlava").textContent = "Flavor: " + beerFlava;
+            clone.querySelector("#beerFeel").textContent = "Mouthfeel: " + beerFeel;
+            clone.querySelector("#beerImpress").textContent = "General Impression: " + beerImpress;
+            
+
+            document.querySelector("#beerModal").appendChild(clone);
+
+        }
+
+        
+
+    });
 }
 
 async function queueStarted() {

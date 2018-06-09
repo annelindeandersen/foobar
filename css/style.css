@@ -1,7 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  border: saddlebrown; }
+  border: saddlebrown; 
+  font-family: Arial;
+}
 
 #container {
   display: grid;
@@ -20,7 +22,7 @@ body {
 }
 
 h1 {
-  font-family: 'Pinewood';
+  font-family: 'Pinewood' !important;
   font-size: 3em;
   font-weight: 100;
 }
@@ -103,11 +105,14 @@ h1 {
 
 #beerModal {
   position: absolute;
-  background-color: white;
+  background-image: url(/img/pexels-photo-129733.jpeg);
+  background-size: cover;
   z-index: 10;
-  width: 100vw;
-  height: 130vh;
+  width: 80vw;
+  height: 125vh;
   display: none;
+  padding: 1vw 10vw;
+  color: #FFF;
 }
 
 #close {
@@ -119,6 +124,13 @@ h1 {
   font-weight: bolder;
   padding: 0;
   margin: 0;
+}
+
+#beerImg {
+  position: absolute;
+  bottom: 5vw;
+  width: 40vw;
+  right: 30vw;
 }
 
 /* QUEUE & SERVING */
