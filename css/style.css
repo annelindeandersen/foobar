@@ -18,16 +18,39 @@ body {
 /* HEADER */
 
 #titleContainer {
-  text-align: center;
+  /* text-align: center; */
   background-image: url(/img/wood-tree-grain-fallen.jpg);
   background-size: cover;
   width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
   font-family: 'Pinewood' !important;
   font-size: 3em;
   font-weight: 100;
+}
+
+#beerPour {
+  background-image: url(/img/beer-sprite-03.png);
+  height: 12vw;
+  width: 10.4vw;
+  background-size: 52.2vw;
+  background-repeat: no-repeat;
+  animation-name: pouring;
+  animation-timing-function: steps(5);
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-fill-mode: both;
+  
+}
+
+@keyframes pouring {
+  100% {
+    background-position: -52.2vw;
+  }
 }
 
 /* BEERS */
@@ -37,11 +60,15 @@ h1 {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   width: 100vw;
-  height: 25vh;
+  grid-row-gap: 2vw;
+  margin-top: 2vw;
 }
 
 .beer {
-  border: solid white;
+  /* border: solid white; */
+  width: 17vw;
+  height: 19.4vw;
+  margin-left: 1.5vw;
 }
 
 .beer {
@@ -91,20 +118,8 @@ h1 {
   background-color: #FFFFFF80;
   width: 80vw;
   margin: 2vw 10vw;
-  padding-bottom: 6vw;
+  padding-bottom: 5vw;
   overflow: hidden;
-}
-
-#bartenderContainer {
-  display: grid;
-  text-align: center;
-  background-color: #FFFFFF80;
-  width: 80vw;
-  margin: 3vw 10vw;
-}
-
-#grid {
-  margin-top: 2vw;
 }
 
 #queue, #served {
@@ -114,10 +129,38 @@ h1 {
   padding: 2.5vw;
   width: 15vw;
   height: 15vw;
+  margin-top: -1vw;
 }
 
 #serveList, #orderList, #orderTitle {
   display: none;
+}
+
+/* BARTENDER & DAVE */
+
+#bartenderContainer, #daveContainer {
+  display: grid;
+  text-align: center;
+  background-color: #FFFFFF80;
+  width: 80vw;
+  margin: 3vw 10vw;
+  overflow: hidden;
+}
+
+/* #daveContainer {
+  /* display: none; */
+/* } */ 
+
+#dave {
+  background-image: url(/img/davegrohl.png);
+  background-size: contain;
+  width: 23vw;
+  height: 23vw;
+  margin-bottom: -2.5vw;
+}
+
+#grid {
+  margin-top: 2vw;
 }
 
 /* MEDIA QUERIES */
@@ -149,7 +192,7 @@ h1 {
     }
     h1 {
       font-size: 5.5em;
-      margin: 2.5vw;
+      margin: 2vw;
     }
     #grid {
       width: 100vw;
@@ -159,28 +202,32 @@ h1 {
       grid-row-gap: 2.5vw;
       margin-top: 2.5vw;
     }
-    #queueContainer, #serveContainer, #bartenderContainer {
+    #daveContainer {
+      display: block;
+    }
+    #queueContainer, #serveContainer, #bartenderContainer, #daveContainer {
       width: 45vw;
       margin: 0;
       justify-content: space-around;
+      padding-bottom: 2vw;
     }
     #queue, #served {
       font-size: 6em;
       width: 11vw;
       padding: 1.5vw;
       height: 11vw;
+      margin-top: 0;
     }
     #queueContainer, #bartenderContainer {
       margin-left: 3.5vw;
     }
-    #serveContainer {
+    #serveContainer, #daveContainer {
       margin-right: 3.5vw;
       margin-left: 2.5vw;
     }
     #beerContainer {
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr;
-      height: 15vh;
     }
     #beerImg {
       bottom: 5vw;
@@ -191,6 +238,11 @@ h1 {
       display: none;
       padding: 1vw 10vw;
       color: #FFF;
+    }
+    .beer {
+      width: 9vw;
+      height: 10.3vw;
+      margin-left: 0.5vw;
     }
     #serveList, #orderList, #orderTitle {
       display: block;
