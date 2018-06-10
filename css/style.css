@@ -3,6 +3,7 @@ body {
   padding: 0;
   border: saddlebrown; 
   font-family: Arial;
+  width: 100vw;
 }
 
 #container {
@@ -10,7 +11,8 @@ body {
   background-image: url(/img/pexels-photo-459480.jpeg);
   background-size: cover;
   height: 100%;
-  
+  width: 100vw;
+  padding-bottom: 5vw;
 }
 
 /* HEADER */
@@ -19,6 +21,7 @@ body {
   text-align: center;
   background-image: url(/img/wood-tree-grain-fallen.jpg);
   background-size: cover;
+  width: 100vw;
 }
 
 h1 {
@@ -41,65 +44,11 @@ h1 {
   border: solid white;
 }
 
-/* .beer1 {
+.beer {
   background-image: url(/img/elhefe.png);
   background-size: contain;
   background-repeat: no-repeat;
 }
-
-.beer2 {
-  background-image: url(/img/fairytaleale.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.beer3 {
-  background-image: url(/img/githop.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.beer4 {
-  background-image: url(/img/hollaback.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.beer5 {
-  background-image: url(/img/hoppilyeverafter.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.beer6 {
-  background-image: url(/img/mowintime.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.beer7 {
-  background-image: url(/img/row26.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.beer8 {
-  background-image: url(/img/ruinedchildhood.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.beer9 {
-  background-image: url(/img/sleighride.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.beer10 {
-  background-image: url(/img/steampunk.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-} */
 
 /* BEER MODAL */
 
@@ -109,7 +58,7 @@ h1 {
   background-size: cover;
   z-index: 10;
   width: 80vw;
-  height: 125vh;
+  height: 100%;
   display: none;
   padding: 1vw 10vw;
   color: #FFF;
@@ -137,12 +86,13 @@ h1 {
 
 #queueContainer, #serveContainer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   text-align: center;
   background-color: #FFFFFF80;
   width: 80vw;
   margin: 2vw 10vw;
   padding-bottom: 6vw;
+  overflow: hidden;
 }
 
 #bartenderContainer {
@@ -153,24 +103,112 @@ h1 {
   margin: 3vw 10vw;
 }
 
+#grid {
+  margin-top: 2vw;
+}
+
 #queue, #served {
   font-size: 3em;
   background-color: #FFF;
   border-radius: 100px;
-  padding: 15%;
+  padding: 2.5vw;
+  width: 15vw;
+  height: 15vw;
+}
+
+#serveList, #orderList, #orderTitle {
+  display: none;
 }
 
 /* MEDIA QUERIES */
 
+@media screen and (min-width: 600px) {
+  #queue, #served {
+    font-size: 4.5em;
+    width: 12vw;
+    padding: 1.5vw;
+    height: 12vw;
+  }
+  h1 {
+    font-size: 3.5em;
+  }
+  #beerImg {
+    bottom: 5vw;
+    width: 30vw;
+    right: 35vw;
+  }
+}
+
   @media screen and (min-width: 1024px) {
     #container {
+      height: 100%;
+      padding-bottom: 5vw;
+    }
+    #titleContainer {
+      background-position: 50%;
+    }
+    h1 {
+      font-size: 5.5em;
+      margin: 2.5vw;
+    }
+    #grid {
+      width: 100vw;
       display: grid;
-      /* grid-template-columns: 12fr; */
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-row-gap: 2.5vw;
+      margin-top: 2.5vw;
+    }
+    #queueContainer, #serveContainer, #bartenderContainer {
+      width: 45vw;
+      margin: 0;
+      justify-content: space-around;
+    }
+    #queue, #served {
+      font-size: 6em;
+      width: 11vw;
+      padding: 1.5vw;
+      height: 11vw;
+    }
+    #queueContainer, #bartenderContainer {
+      margin-left: 3.5vw;
+    }
+    #serveContainer {
+      margin-right: 3.5vw;
+      margin-left: 2.5vw;
     }
     #beerContainer {
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr;
+      height: 15vh;
     }
+    #beerImg {
+      bottom: 5vw;
+      width: 25vw;
+      right: 37.5vw;
+    }
+    #beerModal {
+      display: none;
+      padding: 1vw 10vw;
+      color: #FFF;
+    }
+    #serveList, #orderList, #orderTitle {
+      display: block;
+    }
+  }
 
+  @media screen and (min-width: 1200px) {
+    #queue, #served {
+      font-size: 7.5em;
+      width: 10vw;
+      padding: 1vw;
+      height: 10vw;
+    }
+    #beerImg {
+      bottom: 5vw;
+      width: 20vw;
+      right: 40vw;
+    }
   }
 
 

@@ -13,14 +13,14 @@
     <div id="container">
 
         <div id="titleContainer">
-            <h1>FooBar</h1>
+            <h1>Foo Bar</h1>
         </div>
 
         <div id="beerModal">
             <div id="close">X</div>
         </div>
 
-        <template>
+        <template id="beerTemplate">
             <img id="beerImg" src="" alt="">
             <h2 id="beerName"></h2>
             <p id="beerCat"></p>
@@ -45,14 +45,20 @@
             <div class="beer"></div>
         </div>
 
+        <template id="orderTemplate">
+            <ul id="order"></ul>
+        </template>
+
+        <div id="grid">
+
         <div id="queueContainer">
             <div class="wrapper">
                 <h2>Queue</h2>
                 <div id="queue"></div>
             </div>
             <div class="wrapper">
-                <h2>Order List</h2>
-                <li id="orderList"></li>
+                <h2 id="orderTitle">Order List</h2>
+                <ul id="orderList"></ul>
             </div>
         </div>
 
@@ -62,8 +68,8 @@
                     <div id="served"></div>
                 </div>
                 <div class="wrapper">
-                    <h2>Orders Up</h2>
-                    <li id="serveList"></li>
+                    <h2 id="orderTitle">Orders Up</h2>
+                    <ul id="serveList"></ul>
                 </div>
         </div>
 
@@ -76,7 +82,7 @@
             </div>
             <ul id="bartenderList"></ul>
         </div>
-
+    </div>
     </div>
     <script src="http://petlatkea.dk/2018/front/foobar.js"></script>
     <script src="js/script.js"></script>

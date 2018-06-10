@@ -23,7 +23,7 @@ async function beerLoad() {
 
     // make clone foreach to dislay json for each element
     beerTypes.forEach(element => {
-        let template = document.querySelector("template");
+        let template = document.querySelector("#beerTemplate");
 
         //clone templates content
         let clone = template.content.cloneNode(true);
@@ -52,15 +52,25 @@ async function beerLoad() {
             clone.querySelector("#beerFeel").textContent = "Mouthfeel: " + beerFeel;
             clone.querySelector("#beerImpress").textContent = "General Impression: " + beerImpress;
             
-
+            // indsæt beertypes i modalvindue
             document.querySelector("#beerModal").appendChild(clone);
-
+        
         }
 
-        
+        // for (let i = 0; i < beerTypes.length; i++) {
+        //     let beerImg = beerTypes[i].label;
+        //     console.log("læser den dette????")
+        //     // load billederne ind i beer containerne på forside også
 
-    });
-}
+        //     clone.querySelector("#beerImg").src = "/img/" + beerImg;
+        //     document.querySelector(".beer").appendChild(clone);
+        //     console.log("VIRKER DET????")
+        // }
+
+        });
+        
+    };
+
 
 async function queueStarted() {
     console.log("queue & serving started");
@@ -70,22 +80,64 @@ async function queueStarted() {
 
     // getting the length of queue
     document.querySelector("#queue").innerHTML = jsonData.queue.length;
+    if(jsonData.queue.length > 7) {
+        document.querySelector("#queue").style.backgroundColor = "#DE5F52";
+    } else if (jsonData.queue.length > 4) {
+        document.querySelector("#queue").style.backgroundColor = "#E2BC6F";
+    } else {
+        document.querySelector("#queue").style.backgroundColor = "#689667";
+    }
 
     // getting the length of queue served
     document.querySelector("#served").innerHTML = jsonData.serving.length;
 
+
     // list of orders coming up
-    let orderArr = jsonData.queue[i];
-    // console.log(jsonData.queue[4].order);
-    if(orderArr > 0) {
-        console.log("virker")
+    let orderArr = jsonData.queue;
+
+    // foreach loop for orders
+
+    orderArr.forEach(element => {
+
+        let template = document.querySelector("#orderTemplate");
+
+        //clone templates content
+        let clone = template.content.cloneNode(true);
+        // console.log(clone);    
+
         for (let i = 0; i < orderArr.length; i++) {
             let ordersUp = jsonData.queue[i].order;
-            document.querySelector("#orderList").innerHTML = ordersUp;
-            console.log("orders kommer");
-            
+            ordersUp.splice();
+
+            clone.querySelector("#order").textContent = ordersUp;
+
+            // document.querySelector("#orderList").appendChild(clone);
+
+            if (orderArr.includes(ordersUp)) {
+                // ordersUp.splice();
+                document.querySelector("#orderList").appendChild(clone);
+            } else {
+                ordersUp.splice();
             }
-    }
+
+            // document.querySelector("#orderList").appendChild(clone);
+         
+            
+        }
+
+    });
+
+    
+    // console.log(jsonData.queue[4].order);
+    // if(orderArr > 0) {
+    //     console.log("virker")
+    //     for (let i = 0; i < orderArr.length; i++) {
+    //         let ordersUp = jsonData.queue[i].order;
+    //         document.querySelector("#orderList").innerHTML = ordersUp;
+    //         console.log("orders kommer");
+            
+    //         }
+    // }
 
     // list of orders being served
     let served = jsonData.serving.order;
