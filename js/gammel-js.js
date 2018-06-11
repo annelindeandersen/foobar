@@ -41,57 +41,11 @@ async function beerLoad() {
 
         document.querySelector("#beerContainer").appendChild(clone);
 
-        // NU KOMMER INDHOLDET
 
-
-        let template2 = document.querySelector("#beerTemplate");
-
-        // clone templates content
-        let clone2 = template2.content.cloneNode(true);
-        console.log(clone2);
-
-        // variabler til at gemme info om øl
-        beerNavn = beerType.name;
-        beerCat = beerType.category;
-        beerPop = beerType.popularity;
-        beerAlc = beerType.alc;
-        beerImg = beerType.label;
-        beerFlava = beerType.description.flavor;
-        beerFeel = beerType.description.mouthfeel;
-        beerImpress = beerType.description.overallImpression;
-
-            // clone.querySelector(".beerPic").setAttribute("data-id", beerType.name);
-            document.querySelector(".beerPic").addEventListener("click", (evt) => {
-                let imgId = evt.currentTarget.getAttribute("data-id");
-                console.log(imgId);
-         });
-
-            // let imgId = document.querySelector(".beerPic[data-id='']"); VIRKER IKKE
-            
-
-            // if (beerNavn == imgId) {
-
-                clone2.querySelector("#beerName").textContent = beerNavn;
-                console.log(beerNavn);
-                clone2.querySelector("#beerImg").src = "/img/" + beerImg;
-                console.log(beerImg);
-                clone2.querySelector("#beerCat").textContent = "Beer Type: " + beerCat;
-                clone2.querySelector("#beerPopular").textContent = "Popularity: " + beerPop;
-                clone2.querySelector("#beerAlc").textContent = "Alcohol Percentage: " + beerAlc + "%";
-                clone2.querySelector("#beerFlava").textContent = "Flavor: " + beerFlava;
-                clone2.querySelector("#beerFeel").textContent = "Mouthfeel: " + beerFeel;
-                clone2.querySelector("#beerImpress").textContent = "General Impression: " + beerImpress;
-
-
-                // indsæt beertypes i modalvindue
-
-    
-                document.querySelector("#beerModal").appendChild(clone2);
-
-    });
+    })
 
     // KLIK FOR MODAL
-    document.querySelector(".beerPic").addEventListener("click", clickModal);
+    // document.querySelector(".beerPic").addEventListener("click", clickModal);
 
     // let beerData = document.querySelector(".beerPic[data-id='']");
     // console.log(beerData);
@@ -100,17 +54,71 @@ async function beerLoad() {
     //     document.querySelector("#beerModal").innerHTML = beertypes.name;
     // }
 
+
+    // make clone foreach to dislay json for each element in modal
+    beerTypes.forEach(beerType => {
+        let template = document.querySelector("#beerTemplate");
+
+        // clone templates content
+        let clone = template.content.cloneNode(true);
+        console.log(clone);
+
+        // variabler til at gemme info om øl
+            let beerNavn = beerType.name;
+            let beerCat = beerType.category;
+            let beerPop = beerType.popularity;
+            let beerAlc = beerType.alc;
+            let beerImg = beerType.label;
+            let beerFlava = beerType.description.flavor;
+            let beerFeel = beerType.description.mouthfeel;
+            let beerImpress = beerType.description.overallImpression;
+
+            // clone.querySelector(".beerPic").setAttribute("data-id", beerType.name);
+            document.querySelector(".beerPic").addEventListener("click", (evt) => {
+                let imgId = evt.currentTarget.getAttribute("data-id");
+                console.log(imgId);
+            });
+
+            // let imgId = document.querySelector(".beerPic[data-id='']"); VIRKER IKKE
+            
+
+            // if (beerNavn == imgId) {
+
+                clone.querySelector("#beerName").textContent = beerNavn;
+                console.log(beerNavn);
+                clone.querySelector("#beerImg").src = "/img/" + beerImg;
+                console.log(beerImg);
+                clone.querySelector("#beerCat").textContent = "Beer Type: " + beerCat;
+                clone.querySelector("#beerPopular").textContent = "Popularity: " + beerPop;
+                clone.querySelector("#beerAlc").textContent = "Alcohol Percentage: " + beerAlc + "%";
+                clone.querySelector("#beerFlava").textContent = "Flavor: " + beerFlava;
+                clone.querySelector("#beerFeel").textContent = "Mouthfeel: " + beerFeel;
+                clone.querySelector("#beerImpress").textContent = "General Impression: " + beerImpress;
+
+
+                $(".beerPic").click(openModal);
+                // indsæt beertypes i modalvindue
+
+                if ("data-id='El Hefe'" == beerNavn) {
+                    document.querySelector("#beerModal").appendChild(clone);
+                }
+
+                
+                
+
+            // } 
+            
+        });
         
     }
 
-    function clickModal() {
-        document.querySelector("#beerModal").style.display = "block";
-        document.querySelector("#grid").style.display = "none";
+    function openModal() {
+        $("#beerModal").show();
         $("#close").click(closeBeer);
     }
 
 
-function clickNope(e) {
+function clickModal(e) {
     // ved klik kommer modal vindue op og ved klik på kryds forsvinder det
     document.querySelector("#beerModal").style.display = "block";
     // skjul indhold, så boksen ikke går udover 100vh

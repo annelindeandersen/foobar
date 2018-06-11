@@ -19,9 +19,24 @@
 
         <div id="beerModal">
             <div id="close">X</div>
+            <div class="beers">
+                    <img id="BeerImg" src="" alt="">
+                    <h2 id="BeerName"></h2>
+                    <p id="BeerCat"></p>
+                    <p id="BeerPopular"></p>
+                    <p id="BeerAlc"></p>
+                    <p id="BeerFlava"></p>
+                    <p id="BeerFeel"></p>
+                    <p id="BeerImpress"></p>
+                </div>
         </div>
 
+        <template id="beerPicture">
+                <img class="beerPic" src="" alt="" data-id="">
+        </template>
+
         <template id="beerTemplate">
+        <div class="beer">
             <img id="beerImg" src="" alt="">
             <h2 id="beerName"></h2>
             <p id="beerCat"></p>
@@ -30,20 +45,11 @@
             <p id="beerFlava"></p>
             <p id="beerFeel"></p>
             <p id="beerImpress"></p>
+        </div>
         </template>
         
 
         <div id="beerContainer">
-            <div class="beer"></div>
-            <div class="beer"></div>
-            <div class="beer"></div>
-            <div class="beer"></div>
-            <div class="beer"></div>
-            <div class="beer"></div>
-            <div class="beer"></div>
-            <div class="beer"></div>
-            <div class="beer"></div>
-            <div class="beer"></div>
         </div>
 
         <template id="orderTemplate">
@@ -55,32 +61,35 @@
         <div id="queueContainer">
             <div class="wrapper">
                 <h2>Queue</h2>
-                <div id="queue"></div>
+                <div id="queue" data-id=""></div>
             </div>
             <div class="wrapper">
                 <h2 id="orderTitle">Order List</h2>
-                <ul id="orderList"></ul>
+                <ul id="orderList" data-id=""></ul>
             </div>
         </div>
 
         <div id="serveContainer">
                 <div class="wrapper">
                     <h2>Serving</h2>
-                    <div id="served"></div>
+                    <div id="served" data-id=""></div>
                 </div>
                 <div class="wrapper">
                     <h2 id="orderTitle">Orders Up</h2>
-                    <ul id="serveList"></ul>
+                    <ul id="serveList" data-id=""></ul>
                 </div>
         </div>
 
+        <template id="bartenderTemplate">
+            <div id="bartWrapper">
+                <p id="bartName"></p>
+                <p id="bartStatus" data-id=""></p>
+            </div>
+        </template>
+
         <div id="bartenderContainer">
             <h2>Bartenders</h2>
-            <div class="wrapper">
-            <p class="tenders"></p>
-            <p class="tenders"></p>
-            <p class="tenders"></p>
-            </div>
+            <p class="tenders" ></p>
             <ul id="bartenderList"></ul>
         </div>
 
@@ -89,9 +98,10 @@
         </div>
     </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="http://petlatkea.dk/2018/front/foobar.js"></script>
     <script src="js/script.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="js/jquery.js"></script>
+    
+    <!-- <script src="js/jquery.js"></script> -->
 </body>
 </html>

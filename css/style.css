@@ -8,7 +8,7 @@ body {
 
 #container {
   display: grid;
-  background-image: url(/img/pexels-photo-459480.jpeg);
+  background-image: url(/img/pexels-lysnet.jpg);
   background-size: cover;
   height: 100%;
   width: 100vw;
@@ -19,18 +19,20 @@ body {
 
 #titleContainer {
   /* text-align: center; */
-  background-image: url(/img/wood-tree-grain-fallen.jpg);
+  background-image: url(/img/pexels-photo-459480.jpeg);
   background-size: cover;
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  filter: drop-shadow(0 0 0.75rem black);
 }
 
 h1 {
   font-family: 'Pinewood' !important;
-  font-size: 3em;
+  font-size: 3.5em;
   font-weight: 100;
+  margin: 3.5vw;
 }
 
 #beerPour {
@@ -55,7 +57,7 @@ h1 {
 
 /* BEERS */
 
-#beerContainer {
+#beerPicture {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
@@ -64,22 +66,17 @@ h1 {
   margin-top: 2vw;
 }
 
-.beer {
+.beerPic {
   /* border: solid white; */
   width: 17vw;
   height: 19.4vw;
   margin-left: 1.5vw;
   cursor: pointer;
-}
-
-.beer:hover {
   filter: drop-shadow(0 0 0.75rem black);
 }
 
-.beer {
-  background-image: url(/img/elhefe.png);
-  background-size: contain;
-  background-repeat: no-repeat;
+.beerPic:hover {
+  filter: drop-shadow(0 0 0.75rem white);
 }
 
 /* BEER MODAL */
@@ -151,6 +148,17 @@ h1 {
   width: 80vw;
   margin: 3vw 10vw;
   overflow: hidden;
+}
+
+.tenders {
+  display: grid;
+  justify-content: space-evenly;
+}
+
+#bartWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 50vw;
 }
 
 /* #daveContainer {
@@ -232,7 +240,7 @@ h1 {
       margin-right: 3.5vw;
       margin-left: 2.5vw;
     }
-    #beerContainer {
+    #beerPicture {
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
       grid-template-rows: 1fr;
     }
@@ -246,13 +254,16 @@ h1 {
       padding: 1vw 10vw;
       color: #FFF;
     }
-    .beer {
+    .beerPic {
       width: 9vw;
       height: 10.3vw;
-      margin-left: 0.5vw;
+      margin-left: 0.55vw;
     }
     #serveList, #orderList, #orderTitle {
       display: block;
+    }
+    #bartWrapper {
+      width: 30vw;
     }
   }
 

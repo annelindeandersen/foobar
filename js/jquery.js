@@ -1,6 +1,7 @@
 $(document).ready(function(clicks) {
 
-    $(".beer").click(function() {
+    $("#beerPic").click(function() {
+        console.log("er klikket")
     $("#beerModal").show();
     $("#grid").hide();
     });  
