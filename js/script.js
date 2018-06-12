@@ -13,6 +13,7 @@ let beerImg;
 let beerFlava;
 let beerFeel;
 let beerImpress;
+let totalServe;
 
 
 async function beerLoad() {
@@ -21,7 +22,7 @@ async function beerLoad() {
     // store beertypes in variable
     beerTypes = jsonData.beertypes;
     
-    console.log(beerTypes);
+    // console.log(beerTypes);
 
     // foreach for imgs
     beerTypes.forEach(beerType => {
@@ -29,121 +30,57 @@ async function beerLoad() {
 
         //clone content
         let clone = template.content.cloneNode(true);
-        console.log(clone);
+        // console.log(clone);
 
         let beerImg = beerType.label;
-        console.log(beerImg);
+        // console.log(beerImg);
 
         clone.querySelector(".beerPic").setAttribute("data-id", beerType.name);
         clone.querySelector(".beerPic").src = "/img/" + beerImg;
 
+        clone.querySelector(".beerPic").addEventListener("click", (evt) => {
+            let imgId = evt.currentTarget.dataset.id;
+            // console.log(imgId);
+
+            // viser modal-data
+            // variabler til at gemme info om øl
+            beerNavn = beerType.name;
+            beerCat = beerType.category;
+            beerPop = beerType.popularity;
+            beerAlc = beerType.alc;
+            beerImg = beerType.label;
+            beerFlava = beerType.description.flavor;
+            beerFeel = beerType.description.mouthfeel;
+            beerImpress = beerType.description.overallImpression;
+
+            // NU KOMMER INDHOLDET
+            document.querySelector("#BeerName").textContent = beerNavn;
+            document.querySelector("#BeerImg").src = "/img/" + beerImg;
+            document.querySelector("#bottle").src = "/img/bottle-" + beerImg;
+            document.querySelector("#BeerCat").textContent = "Beer Type: " + beerCat;
+            document.querySelector("#BeerPopular").textContent = "Popularity: " + beerPop;
+            document.querySelector("#BeerAlc").textContent = "Alcohol Percentage: " + beerAlc + "%";
+            document.querySelector("#BeerFlava").textContent = "Flavor: " + beerFlava;
+            document.querySelector("#BeerFeel").textContent = "Mouthfeel: " + beerFeel;
+            document.querySelector("#BeerImpress").textContent = "General Impression: " + beerImpress;
+
+            document.querySelector("#beerModal").style.display = "block";
+            document.querySelector("#grid").style.display = "none";
+            document.querySelector("#close").addEventListener("click",closeBeer);
+
+        });
         // indsæt billederne i HTML
 
         document.querySelector("#beerContainer").appendChild(clone);
 
-        // NU KOMMER INDHOLDET
-
-
-        let template2 = document.querySelector("#beerTemplate");
-
-        // clone templates content
-        let clone2 = template2.content.cloneNode(true);
-        console.log(clone2);
-
-        // variabler til at gemme info om øl
-        beerNavn = beerType.name;
-        beerCat = beerType.category;
-        beerPop = beerType.popularity;
-        beerAlc = beerType.alc;
-        beerImg = beerType.label;
-        beerFlava = beerType.description.flavor;
-        beerFeel = beerType.description.mouthfeel;
-        beerImpress = beerType.description.overallImpression;
-
-            // clone.querySelector(".beerPic").setAttribute("data-id", beerType.name);
-            document.querySelector(".beerPic").addEventListener("click", (evt) => {
-                let imgId = evt.currentTarget.getAttribute("data-id");
-                console.log(imgId);
-         });
-
-            // let imgId = document.querySelector(".beerPic[data-id='']"); VIRKER IKKE
-            
-
-            // if (beerNavn == imgId) {
-
-                clone2.querySelector("#beerName").textContent = beerNavn;
-                console.log(beerNavn);
-                clone2.querySelector("#beerImg").src = "/img/" + beerImg;
-                console.log(beerImg);
-                clone2.querySelector("#beerCat").textContent = "Beer Type: " + beerCat;
-                clone2.querySelector("#beerPopular").textContent = "Popularity: " + beerPop;
-                clone2.querySelector("#beerAlc").textContent = "Alcohol Percentage: " + beerAlc + "%";
-                clone2.querySelector("#beerFlava").textContent = "Flavor: " + beerFlava;
-                clone2.querySelector("#beerFeel").textContent = "Mouthfeel: " + beerFeel;
-                clone2.querySelector("#beerImpress").textContent = "General Impression: " + beerImpress;
-
-
-                // indsæt beertypes i modalvindue
-
-    
-                document.querySelector("#beerModal").appendChild(clone2);
-
     });
-
-    // KLIK FOR MODAL
-    document.querySelector(".beerPic").addEventListener("click", clickModal);
-
-    // let beerData = document.querySelector(".beerPic[data-id='']");
-    // console.log(beerData);
-
-    // if (beerData == "El Hefe") {
-    //     document.querySelector("#beerModal").innerHTML = beertypes.name;
-    // }
-
         
     }
 
-    function clickModal() {
-        document.querySelector("#beerModal").style.display = "block";
-        document.querySelector("#grid").style.display = "none";
-        $("#close").click(closeBeer);
-    }
-
-
-function clickNope(e) {
-    // ved klik kommer modal vindue op og ved klik på kryds forsvinder det
+function clickModal() {
     document.querySelector("#beerModal").style.display = "block";
-    // skjul indhold, så boksen ikke går udover 100vh
     document.querySelector("#grid").style.display = "none";
     document.querySelector("#close").addEventListener("click", closeBeer);
-    
-    // store data attribute in variable
-    let dataID = e.currentTarget.getAttribute("data-id");
-    console.log(dataID);
-
-    let singleView = jsonData.find(function(idElm) {
-        return idElm.name == dataID;
-        console.log(idElm.name);
-    });
-
-    document.querySelector("#beerModal").innerHTML = idElm.name;
-    // variabler til at gemme info om øl
-    let beerNavn = beerType.name;
-    console.log(beerNavn);
-    let beerCat = beerType.category;
-    let beerPop = beerType.popularity;
-    let beerAlc = beerType.alc;
-    let beerImg = beerType.label;
-    let beerFlava = beerType.description.flavor;
-    let beerFeel = beerType.description.mouthfeel;
-    let beerImpress = beerType.description.overallImpression;
-
-    // forsøg at loade indholdet ind
-    // let imgId = document.querySelector(".beerPic[data-id='']");
-
-    // if (beerNavn == imgId) {
-    //     document.querySelector("#beerModal").innerHTML = imgId;
-    // }
 }
 
 function closeBeer() {
@@ -154,7 +91,7 @@ function closeBeer() {
 
 
 async function queueStarted() {
-    console.log("queue & serving started");
+    // console.log("queue & serving started");
 
     data = FooBar.getData();
     jsonData = JSON.parse(data);
@@ -176,99 +113,185 @@ async function queueStarted() {
     // list of orders coming up
     let orderArr = jsonData.queue;
 
+    document.querySelector("#orderList").innerHTML = "";
+
     // foreach loop for orders
+
+    const total = {};
 
     orderArr.forEach(orderElm => {
 
         let template = document.querySelector("#orderTemplate");
-
+        
         //clone templates content
         let clone = template.content.cloneNode(true);
         // console.log(clone);    
 
-        // for (let i = 0; i < orderArr.length; i++) {
-            let ordersUp = orderElm.order;
-            // ordersUp.join();
-            // console.log(ordersUp);
+        // hver ordre gemt i variabel
+        let ordersUp = orderElm.order;
 
-            clone.querySelector("#order").textContent = ordersUp;
+        clone.querySelector("#order").textContent = ordersUp;
 
-            // document.querySelector("#orderList").appendChild(clone);
-
-            if (orderArr.includes(ordersUp)) {
-                // ordersUp.splice();
-                document.querySelector("#orderList").appendChild(clone);
-            } else {
-                ordersUp.splice();
-            }
-
-            // document.querySelector("#orderList").appendChild(clone);
-         
-            
+        // append ordrerne
+        // document.querySelector("#orderList").appendChild(clone);
         
+         
+        // lav 
+        ordersUp.forEach( beerType => {
+            let count = total[ beerType ];
+            if( count == undefined ) {
+                count = 0;
+            } 
+            count++;
+            total[beerType] = count;
 
+            let str = JSON.stringify(total, null, 4);
+            
+            document.querySelector("#orderList").textContent = str;
+
+            // if ( jsonData.queue.length < 0 ) {
+            //     console.log("ingen order lige nu")
+            //     document.querySelector("#orderList").innerHTML = "Currently no orders";
+            // }
+
+            // document.querySelector("#orderList").innerHTML = total [beerType] + " types of beer";
+            // document.querySelector("#orderList2").innerHTML = total[beerType];
+
+            // if (count = 0) {
+            //     document.querySelector("#orderList").innerHTML = "Currently no orders";
+            // }
+        })
+        
     });
 
-    
-    // console.log(jsonData.queue[4].order);
-    // if(orderArr > 0) {
-    //     console.log("virker")
-    //     for (let i = 0; i < orderArr.length; i++) {
-    //         let ordersUp = jsonData.queue[i].order;
-    //         document.querySelector("#orderList").innerHTML = ordersUp;
-    //         console.log("orders kommer");
-            
-    //         }
-    // }
+    // console.log("total: ", total);
+
 
     // list of orders being served
-    let served = jsonData.serving.order;
-    document.querySelector("#serveList").innerHTML = served;
+    // let served = jsonData.serving.order;
+    // document.querySelector("#serveList").innerHTML = served;
     // console.log("serving list")
+
+    // list of orders coming up
+    let serveArr = jsonData.serving;
+
+    document.querySelector("#serveList").innerHTML = "";
+
+    // foreach loop for orders
+
+    const totalServe = {};
+
+    serveArr.forEach(serveElm => {
+
+        let template = document.querySelector("#serveTemplate");
+        
+        //clone templates content
+        let clone = template.content.cloneNode(true);
+        // console.log(clone);    
+
+        // hver ordre gemt i variabel
+        let serveUp = serveElm.order;
+
+        clone.querySelector("#serves").textContent = serveUp;
+
+        // append ordrerne
+        // document.querySelector("#serveList").appendChild(clone);
+        
+         
+        // lav 
+        serveUp.forEach( beerType => {
+            let count = totalServe[ beerType ];
+            if( count == undefined ) {
+                count = 0;
+            } 
+            count++;
+            totalServe[beerType] = count;
+            // console.log("count: ", count);
+            // console.log("totalServe: ", totalServe);
+            // console.log("beerType: ", beerType);
+            // console.log("totalServe[beerType]: ", totalServe[beerType])
+
+            // if ( jsonData.serving.length < 1 ) {
+            //     console.log("ingen serve lige nu")
+            //     document.querySelector("#serveList").innerHTML = "Currently no servings";
+            // }
+            
+            let str = JSON.stringify(totalServe, null, 4);
+            
+            document.querySelector("#serveList").textContent = str;
+           
+        })
+        // console.log(totalServe);
+        
+    });
 }
+
 
 function bartenders() {
     // list of bartenders 
     let bartendersArr = jsonData.bartenders;
-    console.log(bartendersArr);
+    // console.log(bartendersArr);
+
+    document.querySelector(".tenders").innerHTML = "";
 
     bartendersArr.forEach(bartender => {
         //clone content
         let template = document.querySelector("#bartenderTemplate");
         let clone = template.content.cloneNode(true);
-        console.log(clone);
+        // console.log(clone);
 
         let bartenderName = bartender.name;
         let bartenderStat = bartender.status;
-        console.log(bartenderName);
+        // console.log(bartenderName);
 
         // sæt attribut lig med status, så man kan lave et er lig med if statement
-        clone.querySelector("#bartStatus").setAttribute("data-id", bartender.status);
-        console.log(bartenderStat);
-        // gem i variabel
-        let bartStat = clone.querySelector('#bartStatus[data-id=""]');
-        console.log(bartStat);
+        // clone.querySelector("#bartStatus").setAttribute("data-id", bartender.status);
+        // console.log(bartenderStat);
         
+        clone.querySelector("#bartImg").textContent = "";
         clone.querySelector("#bartName").textContent = bartenderName;
         clone.querySelector("#bartStatus").textContent = "Status: " + bartenderStat;
 
         // indsæt billederne i HTML
 
+        document.querySelector(".tenders").appendChild(clone);
 
-        if ( bartStat != bartenderStat ) {
-            document.querySelector(".tenders").appendChild(clone);
-        }
-
-        
-
-        
-
-
-
-        // document.querySelector(".tenders").innerHTML = bartender.name;
-        // console.log(bartender.name)
     })
 
+}
+
+async function hours() {
+    data = FooBar.getData();
+    jsonData = JSON.parse(data);
+
+    // store closing time i variable
+    const closeTime = jsonData.bar.closingTime;
+    console.log(closeTime);
+
+    // insert closing hours to HTML
+    document.querySelector("#closingTime").innerHTML = "Foo Bar serves no beer past: " + closeTime;
+    
+    let time = new Date();
+    console.log(time);
+    let toTime = time.toTimeString();
+    console.log(toTime);
+    let hours = time.getHours();
+    console.log(hours);
+    let min = time.getMinutes();
+    console.log(min);
+    let sec = time.getSeconds();
+    console.log(sec);
+    // let realTime = (((((timeNow/60)/60)/60)/24)/17694);
+    // console.log(realTime);
+    
+    let timeCalc = ( hours + ":" + min + ":" + sec);
+    let currentTime = timeCalc.toString("hh:mm:ss tt");
+    let timeNow = timeCalc;
+    let endTime = ("22:00:00");
+
+    
+    
+    document.querySelector("#hoursOpen").innerHTML = "Time left to buy beers: ";
 }
 
 // refreshing queue every second
@@ -277,5 +300,7 @@ queueStarted();
 
 beerLoad();
 
-// window.setInterval(bartenders, 10000);
+hours();
+
+window.setInterval(bartenders, 10000);
 bartenders();

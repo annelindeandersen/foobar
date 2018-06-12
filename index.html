@@ -20,7 +20,7 @@
         <div id="beerModal">
             <div id="close">X</div>
             <div class="beers">
-                    <img id="BeerImg" src="" alt="">
+                <div id="modalWrap">
                     <h2 id="BeerName"></h2>
                     <p id="BeerCat"></p>
                     <p id="BeerPopular"></p>
@@ -29,31 +29,23 @@
                     <p id="BeerFeel"></p>
                     <p id="BeerImpress"></p>
                 </div>
+                    <div id="imgWrap">
+                    <img id="BeerImg" src="" alt="">
+                    <img id="bottle" src="" alt="">
+                    </div>
+                    <div id="close2" onclick="closeBeer()">Back to Board</div>
+                </div>
         </div>
 
         <template id="beerPicture">
                 <img class="beerPic" src="" alt="" data-id="">
         </template>
 
-        <template id="beerTemplate">
-        <div class="beer">
-            <img id="beerImg" src="" alt="">
-            <h2 id="beerName"></h2>
-            <p id="beerCat"></p>
-            <p id="beerPopular"></p>
-            <p id="beerAlc"></p>
-            <p id="beerFlava"></p>
-            <p id="beerFeel"></p>
-            <p id="beerImpress"></p>
-        </div>
-        </template>
-        
-
         <div id="beerContainer">
         </div>
 
         <template id="orderTemplate">
-            <ul id="order"></ul>
+            <p id="order"></p>
         </template>
 
         <div id="grid">
@@ -65,9 +57,14 @@
             </div>
             <div class="wrapper">
                 <h2 id="orderTitle">Order List</h2>
-                <ul id="orderList" data-id=""></ul>
+                <p id="orderList" data-id=""></p>
+                <p id="orderList2"></p>
             </div>
         </div>
+
+        <template id="serveTemplate">
+            <p id="serves"></p>
+        </template>
 
         <div id="serveContainer">
                 <div class="wrapper">
@@ -76,12 +73,13 @@
                 </div>
                 <div class="wrapper">
                     <h2 id="orderTitle">Orders Up</h2>
-                    <ul id="serveList" data-id=""></ul>
+                    <p id="serveList" data-id=""></p>
                 </div>
         </div>
 
         <template id="bartenderTemplate">
             <div id="bartWrapper">
+                <div id="bartImg" class=""></div>
                 <p id="bartName"></p>
                 <p id="bartStatus" data-id=""></p>
             </div>
@@ -93,8 +91,18 @@
             <ul id="bartenderList"></ul>
         </div>
 
-        <div id="daveContainer">
-            <div id="dave"></div>
+        <div id="openContainer">
+            <h2>Opening Hours</h2>
+            <div id="closingTime"></div>
+            <div id="hoursOpen"></div>
+            <div class="beerDisplay">
+                <img id="dispBeer" src="img/bottle-fairytaleale.png">
+                <img id="dispBeer" src="img/bottle-elhefe.png">
+                <img id="dispBeer" src="img/bottle-ruinedchildhood.png">
+                <img id="dispBeer" src="img/bottle-hollaback.png">
+                <img id="dispBeer" src="img/bottle-mowintime.png">
+                <img id="dispBeer" src="img/bottle-sleighride.png">
+            </div>
         </div>
     </div>
     </div>
