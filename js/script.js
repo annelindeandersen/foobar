@@ -5,55 +5,41 @@ let jsonData;
 let i;
 let beerTypes;
 let beerType;
-let beerNavn;
-let beerCat;
-let beerPop;
-let beerAlc;
-let beerImg;
-let beerFlava;
-let beerFeel;
-let beerImpress;
 let totalServe;
-
 
 async function beerLoad() {
     data = FooBar.getData();
     jsonData = JSON.parse(data);
     // store beertypes in variable
     beerTypes = jsonData.beertypes;
-    
-    // console.log(beerTypes);
 
-    // foreach for imgs
+    // foreach for beer badges imgs
     beerTypes.forEach(beerType => {
         let template = document.querySelector("#beerPicture");
 
         //clone content
         let clone = template.content.cloneNode(true);
-        // console.log(clone);
-
+    
         let beerImg = beerType.label;
-        // console.log(beerImg);
 
         clone.querySelector(".beerPic").setAttribute("data-id", beerType.name);
         clone.querySelector(".beerPic").src = "/img/" + beerImg;
 
+        // klik event, der tjekker, hvilket data-id, der er klikket på
         clone.querySelector(".beerPic").addEventListener("click", (evt) => {
             let imgId = evt.currentTarget.dataset.id;
-            // console.log(imgId);
 
-            // viser modal-data
-            // variabler til at gemme info om øl
-            beerNavn = beerType.name;
-            beerCat = beerType.category;
-            beerPop = beerType.popularity;
-            beerAlc = beerType.alc;
-            beerImg = beerType.label;
-            beerFlava = beerType.description.flavor;
-            beerFeel = beerType.description.mouthfeel;
-            beerImpress = beerType.description.overallImpression;
+            // variabler til at gemme info om øl til visning af modalvindue
+            const beerNavn = beerType.name;
+            const beerCat = beerType.category;
+            const beerPop = beerType.popularity;
+            const beerAlc = beerType.alc;
+            const beerImg = beerType.label;
+            const beerFlava = beerType.description.flavor;
+            const beerFeel = beerType.description.mouthfeel;
+            const beerImpress = beerType.description.overallImpression;
 
-            // NU KOMMER INDHOLDET
+            // indholdet sættes ind i de deres plads i HTML
             document.querySelector("#BeerName").textContent = beerNavn;
             document.querySelector("#BeerImg").src = "/img/" + beerImg;
             document.querySelector("#bottle").src = "/img/bottle-" + beerImg;
@@ -64,39 +50,30 @@ async function beerLoad() {
             document.querySelector("#BeerFeel").textContent = "Mouthfeel: " + beerFeel;
             document.querySelector("#BeerImpress").textContent = "General Impression: " + beerImpress;
 
+            // modal vindue vises, og container med indhold skjules. 
             document.querySelector("#beerModal").style.display = "block";
             document.querySelector("#grid").style.display = "none";
+            // luk knap bliver en mulighed
             document.querySelector("#close").addEventListener("click",closeBeer);
 
         });
         // indsæt billederne i HTML
-
         document.querySelector("#beerContainer").appendChild(clone);
-
     });
-        
-    }
-
-function clickModal() {
-    document.querySelector("#beerModal").style.display = "block";
-    document.querySelector("#grid").style.display = "none";
-    document.querySelector("#close").addEventListener("click", closeBeer);
 }
 
 function closeBeer() {
-    // vis indhold igen, når modal lukkes
+    // luk modal ved klik og vis alt indhold
     document.querySelector("#beerModal").style.display = "none";
     document.querySelector("#grid").style.display = "grid";
 }
 
-
 async function queueStarted() {
-    // console.log("queue & serving started");
-
+    // hent json data ind
     data = FooBar.getData();
     jsonData = JSON.parse(data);
 
-    // getting the length of queue
+    // getting the length of queue and marking stress level with matching color
     document.querySelector("#queue").innerHTML = jsonData.queue.length;
     if(jsonData.queue.length > 7) {
         document.querySelector("#queue").style.backgroundColor = "#DE5F52";
@@ -109,34 +86,21 @@ async function queueStarted() {
     // getting the length of queue served
     document.querySelector("#served").innerHTML = jsonData.serving.length;
 
-
     // list of orders coming up
     let orderArr = jsonData.queue;
 
+    // updated every second and making sure to have a clean slate everytime!!
     document.querySelector("#orderList").innerHTML = "";
 
-    // foreach loop for orders
-
+    // foreach loop for orders starting with variable for total orders
     const total = {};
 
     orderArr.forEach(orderElm => {
 
-        let template = document.querySelector("#orderTemplate");
-        
-        //clone templates content
-        let clone = template.content.cloneNode(true);
-        // console.log(clone);    
-
         // hver ordre gemt i variabel
         let ordersUp = orderElm.order;
-
-        clone.querySelector("#order").textContent = ordersUp;
-
-        // append ordrerne
-        // document.querySelector("#orderList").appendChild(clone);
         
-         
-        // lav 
+        // foreach for hver beertype, der tæller, hvor mange af hver type, der bestilles
         ordersUp.forEach( beerType => {
             let count = total[ beerType ];
             if( count == undefined ) {
@@ -145,60 +109,35 @@ async function queueStarted() {
             count++;
             total[beerType] = count;
 
-            let str = JSON.stringify(total, null, 4);
+            if ( jsonData.queue == [] ) {
+                document.querySelector("#orderList").innerHTML = "Currently no orders";
+            }
+            console.log("total: ", total);
+
+            // lav til string og lav ny linje
+            let strBeer = JSON.stringify(total, null, 1);
+            // replace alle tegn, der ikke skal være der
+            let str = strBeer.replace('{', '').replace('}', '').replace(/,/gi, '').replace(/"/gi, '').replace(/:/gi, ' x ');
             
-            document.querySelector("#orderList").textContent = str;
-
-            // if ( jsonData.queue.length < 0 ) {
-            //     console.log("ingen order lige nu")
-            //     document.querySelector("#orderList").innerHTML = "Currently no orders";
-            // }
-
-            // document.querySelector("#orderList").innerHTML = total [beerType] + " types of beer";
-            // document.querySelector("#orderList2").innerHTML = total[beerType];
-
-            // if (count = 0) {
-            //     document.querySelector("#orderList").innerHTML = "Currently no orders";
-            // }
-        })
-        
+            // indsæt den fulde ordre i HTML
+            document.querySelector("#orderList").innerText = str;
+        }) 
     });
 
-    // console.log("total: ", total);
-
-
-    // list of orders being served
-    // let served = jsonData.serving.order;
-    // document.querySelector("#serveList").innerHTML = served;
-    // console.log("serving list")
-
-    // list of orders coming up
+    // list of servings
     let serveArr = jsonData.serving;
 
+    // updated every second and making sure to have a clean slate everytime!!
     document.querySelector("#serveList").innerHTML = "";
 
-    // foreach loop for orders
-
+    // foreach loop for servings starting with variable of total serves
     const totalServe = {};
 
-    serveArr.forEach(serveElm => {
-
-        let template = document.querySelector("#serveTemplate");
-        
-        //clone templates content
-        let clone = template.content.cloneNode(true);
-        // console.log(clone);    
-
+    serveArr.forEach(serveElm => {   
         // hver ordre gemt i variabel
         let serveUp = serveElm.order;
-
-        clone.querySelector("#serves").textContent = serveUp;
-
-        // append ordrerne
-        // document.querySelector("#serveList").appendChild(clone);
-        
          
-        // lav 
+        // foreach for hver beertype, der tæller, hvor mange af hver type, der serveres
         serveUp.forEach( beerType => {
             let count = totalServe[ beerType ];
             if( count == undefined ) {
@@ -206,58 +145,45 @@ async function queueStarted() {
             } 
             count++;
             totalServe[beerType] = count;
-            // console.log("count: ", count);
-            // console.log("totalServe: ", totalServe);
-            // console.log("beerType: ", beerType);
-            // console.log("totalServe[beerType]: ", totalServe[beerType])
+            
+            if ( jsonData.serving == [] ) {
+                document.querySelector("#serveList").innerHTML = "Currently no orders";
+            }
 
-            // if ( jsonData.serving.length < 1 ) {
-            //     console.log("ingen serve lige nu")
-            //     document.querySelector("#serveList").innerHTML = "Currently no servings";
-            // }
+            // lav til string og lav ny linje
+            let strServe = JSON.stringify(totalServe, null, 1);
+            // replace alle tegn, der ikke skal være der
+            let str = strServe.replace('{', '').replace('}', '').replace(/,/gi, '').replace(/"/gi, '').replace(/:/gi, ' x ');
             
-            let str = JSON.stringify(totalServe, null, 4);
-            
-            document.querySelector("#serveList").textContent = str;
-           
+            // indsæt det fulde antal af typer øl, der serveres i HTML
+            document.querySelector("#serveList").innerText = str;
         })
-        // console.log(totalServe);
-        
     });
 }
-
 
 function bartenders() {
     // list of bartenders 
     let bartendersArr = jsonData.bartenders;
-    // console.log(bartendersArr);
-
+   
+     // updated every second and making sure to have a clean slate everytime!!
     document.querySelector(".tenders").innerHTML = "";
 
+    // klon i foreach for hver enkelte bartender
     bartendersArr.forEach(bartender => {
         //clone content
         let template = document.querySelector("#bartenderTemplate");
         let clone = template.content.cloneNode(true);
-        // console.log(clone);
 
         let bartenderName = bartender.name;
         let bartenderStat = bartender.status;
-        // console.log(bartenderName);
-
-        // sæt attribut lig med status, så man kan lave et er lig med if statement
-        // clone.querySelector("#bartStatus").setAttribute("data-id", bartender.status);
-        // console.log(bartenderStat);
         
         clone.querySelector("#bartImg").textContent = "";
         clone.querySelector("#bartName").textContent = bartenderName;
         clone.querySelector("#bartStatus").textContent = "Status: " + bartenderStat;
 
-        // indsæt billederne i HTML
-
+        // indsæt i HTML
         document.querySelector(".tenders").appendChild(clone);
-
     })
-
 }
 
 async function hours() {
@@ -289,8 +215,6 @@ async function hours() {
     let timeNow = timeCalc;
     let endTime = ("22:00:00");
 
-    
-    
     document.querySelector("#hoursOpen").innerHTML = "Time left to buy beers: ";
 }
 
@@ -302,5 +226,6 @@ beerLoad();
 
 hours();
 
+// refresh bartender status every 10 seconds
 window.setInterval(bartenders, 10000);
 bartenders();

@@ -15,6 +15,10 @@ body {
   padding-bottom: 5vw;
 }
 
+h2 {
+  text-transform: uppercase;
+}
+
 /* HEADER */
 
 #titleContainer {
@@ -29,11 +33,26 @@ body {
 }
 
 h1 {
-  font-family: 'Pinewood' !important;
-  font-size: 3.5em;
+  font-family: 'Alfa Slab One';
+  text-transform: uppercase;
+  font-size: 3.1em;
   font-weight: 100;
-  margin: 3.5vw;
+  margin: 2vw;
+  padding-right: 1vw;
+  filter: drop-shadow(0 0 0.75rem rgb(230, 160, 56));
 }
+
+/* #sign {
+  position: absolute;
+  background-image: url(/img/woodsign.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  width: 50vw;
+  height: 13vw;
+  left: 20vw;
+  top: 0vw;
+} */
 
 #beerPour {
   background-image: url(/img/beer-sprite-03.png);
@@ -61,17 +80,26 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  width: 100vw;
-  grid-row-gap: 2vw;
+  grid-row-gap: 2.5vw;
+  
+}
+
+#beerContainer {
+  background-color: #FFFFFF80;
+  padding-top: 1.5vw;
+  padding-bottom: 0.5vw;
+  padding-left: 1.5vw;
+  width: 78.5vw;
+  margin: 0vw 10vw 0;
 }
 
 .beerPic {
   /* border: solid white; */
-  width: 17vw;
-  height: 19.4vw;
-  margin-left: 1.5vw;
+  width: 14.5vw;
+  height: 16.5vw;
+  margin-left: 0;
   cursor: pointer;
-  filter: drop-shadow(0 0 0.75rem black);
+  /* filter: drop-shadow(0 0 0.75rem black); */
 }
 
 .beerPic:hover {
@@ -152,7 +180,7 @@ h1 {
   background-color: #FFFFFF80;
   width: 80vw;
   margin: 2vw 10vw;
-  padding-bottom: 5vw;
+  padding-bottom: 3vw;
   overflow: hidden;
 }
 
@@ -173,7 +201,7 @@ h1 {
 /* BARTENDER & DAVE */
 
 #bartenderContainer, #openContainer {
-  display: grid;
+  /* display: grid; */
   text-align: center;
   background-color: #FFFFFF80;
   width: 80vw;
@@ -242,7 +270,7 @@ h1 {
 }
 
 #grid {
-  margin-top: 2vw;
+  margin-top: 0vw;
 }
 
 /* OPEN HOURS */
@@ -254,6 +282,10 @@ h1 {
 }
 #dispBeer {
   height: 12vh;
+}
+
+#openContainer {
+  padding-bottom: 3vw;
 }
 
 /* MEDIA QUERIES */
@@ -297,11 +329,12 @@ h1 {
       padding-bottom: 5vw;
     }
     #titleContainer {
-      background-position: 50%;
+      background-position: top;
     }
     h1 {
-      font-size: 5.5em;
-      margin: 2vw;
+      font-size: 5em;
+      margin: 1vw;
+      padding-right: 0.5vw;
     }
     #grid {
       width: 100vw;
@@ -309,7 +342,7 @@ h1 {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
       grid-row-gap: 2.5vw;
-      margin-top: 2.5vw;
+      margin-top: 1.5vw;
     }
     #openContainer {
       display: block;
@@ -318,12 +351,17 @@ h1 {
       width: 45vw;
       margin: 0;
       justify-content: space-around;
+      padding-bottom: 0;
+    }
+    h2 {
+      font-size: 1em;
+      text-transform: uppercase;
     }
     #queue, #served {
-      font-size: 6em;
-      width: 11vw;
-      padding: 1.5vw;
-      height: 11vw;
+      font-size: 5.8em;
+      width: 10vw;
+      padding: 1vw;
+      height: 10vw;
       margin-top: 0;
     }
     #queueContainer, #bartenderContainer {
@@ -338,6 +376,15 @@ h1 {
       grid-template-rows: 1fr;
       margin-top: 1vw;
     }
+    #beerContainer {
+      margin: 0 3.5vw;
+      width: 93vw;
+      padding-left: 0vw;
+      padding-top: 1vw;
+      padding-bottom: 0.6vw;
+      display: flex;
+      justify-content: space-evenly;
+    }
     #BeerImg {
       height: 28vh;
       width: auto;
@@ -351,19 +398,20 @@ h1 {
       color: #FFF;
     }
     .beerPic {
-      width: 9vw;
-      height: 10.3vw;
-      margin-left: 0.55vw;
+      width: 8.2vw;
+      height: 9.38vw;
+      /* margin-left: 0.5vw; */
     }
     #serveList, #orderList, #orderTitle {
       display: block;
     }
     #serveList, #orderList {
       background-color: rgb(226, 212, 188);
-      padding: 1vw;
+      padding: 1vw 0 2vw;
       filter: drop-shadow(0 0 0.75rem rgb(128, 117, 100));
       width: 20vw;
       font-size: 0.8em;
+      font-style: italic;
     }
     #bartWrapper {
       width: 35vw;
@@ -386,36 +434,36 @@ h1 {
 
     }
     #bartImg {
-      width: 5vw;
-      height: 5vw;
+      width: 4vw;
+      height: 4vw;
       margin-left: 0;
     }
     #bartName{
-      font-size: 1.4em;
+      font-size: 1em;
       font-weight: 600;
     }
     #bartStatus{
-      font-size: 1.2em;
+      font-size: 1em;
     }
     #bottle {
       height: 70vh;
     }
     .beerDisplay {
       display: flex;
-      justify-content: space-around;
+      justify-content: space-evenly;
       margin-top: 2vw;
     }
     #dispBeer {
-      height: 20vh;
+      height: 12vh;
     }
   }
 
   @media screen and (min-width: 1200px) {
     #queue, #served {
-      font-size: 7.5em;
-      width: 10vw;
+      font-size: 5.5em;
+      width: 8vw;
       padding: 1vw;
-      height: 10vw;
+      height: 8vw;
     }
     .beers {
       margin-top: 5vw;
@@ -423,14 +471,47 @@ h1 {
       width: 75vw;
       margin-left: -2.5vw;
     }
+    #beerContainer {
+      width: 85vw;
+      margin: 0 7.5vw;
+    }
+    #grid {
+      width: 85vw;
+      grid-row-gap: 1vw;
+      margin-top: 1vw;
+    }
+    #queueContainer, #serveContainer, #bartenderContainer, #openContainer {
+      width: 42vw;
+    }
+    #queueContainer, #bartenderContainer {
+      margin-left: 7.5vw;
+    }
+    #serveContainer, #openContainer {
+      margin-right: 7.5vw;
+      margin-left: 1vw;
+    }
+    #bartImg {
+      width: 3.5vw;
+      height: 3.5vw;
+      margin-left: 0;
+    }
+    #bartWrapper {
+      width: 30vw;
+      margin-bottom: 0.8vw;
+    }
+    .beerPic {
+      width: 7.5vw;
+      height: 8.58vw;
+      /* margin-left: 0.5vw; */
+    }
   }
 
   @media screen and (min-width: 1300px) {
     #queue, #served {
-      font-size: 7.5em;
-      width: 10vw;
+      font-size: 5em;
+      width: 7vw;
       padding: 1vw;
-      height: 10vw;
+      height: 7vw;
     }
     #beerContainer {
       display: flex;
@@ -459,6 +540,9 @@ h1 {
     }
     #grid {
       margin-top: 1vw;
+    }
+    #dispBeer {
+      height: 12vh;
     }
   }
 
