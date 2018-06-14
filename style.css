@@ -1,0 +1,579 @@
+/* GENERELLE TING */
+body {
+  margin: 0;
+  padding: 0;
+  border: saddlebrown; 
+  font-family: Arial;
+  width: 100vw;
+}
+
+#container {
+  display: grid;
+  background-image: url(img/pexels-lysnet.jpg);
+  background-size: cover;
+  height: 100%;
+  width: 100vw;
+  padding-bottom: 5vw;
+}
+
+h2 {
+  text-transform: uppercase;
+}
+
+/* HEADER */
+
+#titleContainer {
+  background-image: url(img/pexels-photo-459480.jpeg);
+  background-size: cover;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 0 0.75rem black);
+}
+
+h1 {
+  font-family: 'Alfa Slab One';
+  text-transform: uppercase;
+  font-size: 3.1em;
+  font-weight: 100;
+  margin: 2vw;
+  padding-right: 1vw;
+  filter: drop-shadow(0 0 0.75rem rgb(230, 160, 56));
+}
+
+#beerPour {
+  background-image: url(img/beer-sprite-03.png);
+  height: 12vw;
+  width: 10.4vw;
+  background-size: 52.2vw;
+  background-repeat: no-repeat;
+  animation-name: pouring;
+  animation-timing-function: steps(5);
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  animation-direction: alternate;
+  -webkit-animation-name: pouring;
+  -webkit-animation-timing-function: steps(5);
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-duration: 3s;
+  -webkit-animation-fill-mode: forwards;
+  -webkit-animation-direction: alternate;
+}
+
+@keyframes pouring {
+  100% {
+    background-position: -52.2vw;
+  }
+}
+@-webkit-keyframes pouring {
+  100% {
+    background-position: -52.2vw;
+  }
+}
+
+/* BEERS */
+
+#beerPicture {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-row-gap: 2.5vw;
+  
+}
+
+#beerContainer {
+  background-color: #FFFFFF80;
+  padding-top: 1.5vw;
+  padding-bottom: 0.5vw;
+  padding-left: 1.5vw;
+  width: 78.5vw;
+  margin: 0vw 10vw 0;
+}
+
+.beerPic {
+  width: 14.5vw;
+  height: 16.5vw;
+  margin-left: 0;
+  cursor: pointer;
+}
+
+.beerPic:hover {
+  filter: drop-shadow(0 0 0.75rem white);
+}
+
+/* BEER MODAL */
+
+#beerModal {
+  position: absolute;
+  background-image: url(img/pexels-photo-129733.jpeg);
+  background-size: cover;
+  z-index: 10;
+  width: 80vw;
+  height: 215%;
+  display: none;
+  padding: 1vw 10vw;
+  color: #FFF;
+}
+
+#close {
+  position: fixed;
+  top: 1%;
+  left: 90%;
+  font-size: 2em;
+  font-family: Arial;
+  font-weight: bolder;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+#close:hover {
+  filter: drop-shadow(0 0 0.75rem white);
+}
+
+#close2 {
+  text-align: center;
+  padding-bottom: 3vw;
+  cursor: pointer;
+}
+
+#BeerImg {
+  margin: 4.5vw 0vw 0vw;
+  height: 28vh;
+}
+
+#imgWrap {
+  display: flex;
+  justify-content: center;
+}
+
+#bottle {
+  height: 35vh;
+}
+
+#BeerName {
+  margin-top: 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.beers {
+  margin-top: 10vw;
+  background-color: rgba(243, 228, 197, 0.774);
+  padding: 5vw 5vw 0vw;
+  filter: drop-shadow(0 0 0.75rem rgb(63, 57, 48));
+  width: 80vw;
+  margin-left: -5vw;
+}
+
+/* QUEUE & SERVING */
+
+#queueContainer, #serveContainer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  background-color: #FFFFFF80;
+  width: 80vw;
+  margin: 2vw 10vw;
+  padding-bottom: 3vw;
+  overflow: hidden;
+}
+
+#queue, #served {
+  font-size: 4em;
+  background-color: #FFF;
+  border-radius: 100px;
+  padding: 2.5vw;
+  width: 20vw;
+  height: 20vw;
+  margin-top: -1vw;
+}
+
+#serveList, #orderList, #orderTitle {
+  display: none;
+}
+
+/* BARTENDER & DAVE */
+
+#bartenderContainer, #openContainer {
+  text-align: center;
+  background-color: #FFFFFF80;
+  width: 80vw;
+  margin: 3vw 10vw;
+  overflow: hidden;
+}
+
+.tenders {
+  display: grid;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 0;
+
+}
+
+#bartWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50vw;
+  margin-bottom: 3vw;
+}
+
+#bartName {
+  font-size: 1.5em;
+  margin: 1vw 0;
+}
+
+#bartStatus {
+  font-style: italic;
+  margin: 0;
+}
+
+#bartImg {
+  background-color: rgb(226, 212, 188);
+  filter: drop-shadow(0 0 0.75rem rgb(128, 117, 100));
+  border-radius: 100px;
+  width: 20vw;
+  height: 20vw;
+  margin-left: 15vw;
+}
+
+#bartWrapper:nth-child(1) #bartImg {
+  background-image: url(img/davegrohl.png);
+  background-size: 150%;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+#bartWrapper:nth-child(2) #bartImg {
+  background-image: url(img/kurt-cobain.png);
+  background-size: 150%;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+#bartWrapper:nth-child(3) #bartImg {
+  background-image: url(img/Jack-white.png);
+  background-size: 120%;
+  background-position: right top;
+  background-repeat: no-repeat;
+}
+
+#grid {
+  margin-top: 0vw;
+}
+
+/* OPEN HOURS */
+
+.beerDisplay {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2vw;
+}
+#dispBeer {
+  height: 12vh;
+}
+
+#openContainer {
+  padding-bottom: 3vw;
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (min-width: 600px) {
+  #queue, #served {
+    font-size: 4.5em;
+    width: 12vw;
+    padding: 1.5vw;
+    height: 12vw;
+  }
+  h1 {
+    font-size: 3.5em;
+  }
+  #BeerImg {
+    height: 28vh;
+    width: auto;
+    margin: 2.5vw 0vw;
+  }
+  #beerModal {
+    height: 105%;
+  }
+  .beers {
+    margin-top: 10vw;
+    padding: 5vw 5vw 0vw;
+    width: 70vw;
+    margin-left: 0;
+  }
+  #close2 {
+    display: none;
+  }
+  #BeerName {
+    font-size: 2.5em;
+    padding: 0;
+  }
+  .beerPic {
+    margin-left: 0.35vw;
+  }
+}
+
+  @media screen and (min-width: 1024px) {
+    #container {
+      height: 100%;
+      padding-bottom: 5vw;
+    }
+    #titleContainer {
+      background-position: top;
+    }
+    h1 {
+      font-size: 5em;
+      margin: 1vw;
+      padding-right: 0.5vw;
+    }
+    #grid {
+      width: 100vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      grid-row-gap: 2.5vw;
+      margin-top: 1.5vw;
+    }
+    #openContainer {
+      display: block;
+    }
+    #queueContainer, #serveContainer, #bartenderContainer, #openContainer {
+      width: 45vw;
+      margin: 0;
+      justify-content: space-around;
+      padding-bottom: 0;
+    }
+    h2 {
+      font-size: 1em;
+      text-transform: uppercase;
+    }
+    #queue, #served {
+      font-size: 5.8em;
+      width: 10vw;
+      padding: 1vw;
+      height: 10vw;
+      margin-top: 0;
+    }
+    #queueContainer, #bartenderContainer {
+      margin-left: 3.5vw;
+    }
+    #serveContainer, #openContainer {
+      margin-right: 3.5vw;
+      margin-left: 2.5vw;
+    }
+    #beerPicture {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr;
+      margin-top: 1vw;
+    }
+    #beerContainer {
+      margin: 0 3.5vw;
+      width: 93vw;
+      padding-left: 0vw;
+      padding-top: 1vw;
+      padding-bottom: 0.6vw;
+      display: flex;
+      justify-content: space-around;
+    }
+    #BeerImg {
+      height: 28vh;
+      width: auto;
+      margin: 1.5vw 0vw;
+      display: none;
+    }
+    #beerModal {
+      height: 110%;
+      display: none;
+      padding: 0vw 10vw;
+      color: #FFF;
+    }
+    .beerPic {
+      width: 8.2vw;
+      height: 9.38vw;
+    }
+    #serveList, #orderList, #orderTitle {
+      display: block;
+    }
+    #serveList, #orderList {
+      /* background-color: rgb(226, 212, 188); */
+      background-image: url(img/paper.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      padding: 1vw 0 2vw;
+      filter: drop-shadow(0 0 0.75rem rgb(128, 117, 100));
+      width: 20vw;
+      font-size: 0.8em;
+      font-style: italic;
+    }
+    #bartWrapper {
+      width: 35vw;
+      flex-direction: row;
+      margin-bottom: 1vw;
+      align-items: center;
+    }
+    .beers {
+      display: grid;
+      grid-template-columns: 2.5fr 1fr;
+      margin-top: 8vw;
+      padding: 4vw 5vw 1vw;
+      width: 75vw;
+      margin-left: -2.5vw;
+    }
+    #BeerName {
+      margin-top: 0;
+      margin-bottom: 0;
+      text-align: left;
+
+    }
+    #bartImg {
+      width: 4vw;
+      height: 4vw;
+      margin-left: 0;
+    }
+    #bartName{
+      font-size: 1em;
+      font-weight: 600;
+    }
+    #bartStatus{
+      font-size: 1em;
+    }
+    #bottle {
+      height: 70vh;
+    }
+    .beerDisplay {
+      display: flex;
+      justify-content: space-around;
+      width: 35vw;
+      margin: 2vw 5vw 0;
+    }
+    #dispBeer {
+      height: 12vh;
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    #queue, #served {
+      font-size: 5.5em;
+      width: 8vw;
+      padding: 1vw;
+      height: 8vw;
+    }
+    .beers {
+      margin-top: 5vw;
+      padding: 5vw 5vw 0vw;
+      width: 75vw;
+      margin-left: -2.5vw;
+    }
+    #beerContainer {
+      width: 85vw;
+      margin: 0 7.5vw;
+    }
+    #grid {
+      width: 85vw;
+      grid-row-gap: 1vw;
+      margin-top: 1vw;
+    }
+    #queueContainer, #serveContainer, #bartenderContainer, #openContainer {
+      width: 42vw;
+    }
+    #queueContainer, #bartenderContainer {
+      margin-left: 7.5vw;
+    }
+    #serveContainer, #openContainer {
+      margin-right: 7.5vw;
+      margin-left: 1vw;
+    }
+    #bartImg {
+      width: 3.5vw;
+      height: 3.5vw;
+      margin-left: 0;
+    }
+    #bartWrapper {
+      width: 30vw;
+      margin-bottom: 0.8vw;
+    }
+    .beerPic {
+      width: 7.5vw;
+      height: 8.58vw;
+    }
+  }
+
+  @media screen and (min-width: 1300px) {
+    #queue, #served {
+      font-size: 5em;
+      width: 7vw;
+      padding: 1vw;
+      height: 7vw;
+    }
+    #beerContainer {
+      display: flex;
+      justify-content: space-evenly;
+    }
+    .beerPic {
+      height: 8.55vw;
+      width: 7.5vw;
+    }
+    #beerPicture {
+      grid-row-gap: 0vw;
+      margin-top: 1vw;
+    }
+    #beerPour {
+      height: 8vw;
+      width: 6.9vw;
+      background-size: 34.67vw;
+    }
+    @keyframes pouring {
+      100% {
+        background-position: -34.67vw;
+      }
+    }
+    @-webkit-keyframes pouring {
+      100% {
+        background-position: -34.67vw;
+      }
+    }
+    h1 {
+      margin: 0 1vw; 
+    }
+    #grid {
+      margin-top: 1vw;
+    }
+    #dispBeer {
+      height: 12vh;
+    }
+    #serveList, #orderList {
+      width: 15vw;
+    }
+  }
+
+  @media screen and (min-width: 1400px) {
+    #beerContainer {
+      width: 75vw;
+      margin: 0 12.5vw;
+    }
+    #grid {
+      width: 75vw;
+    }
+    #queueContainer, #serveContainer, #bartenderContainer, #openContainer {
+     width: 37vw;
+    }
+    #queueContainer, #bartenderContainer {
+      margin-left: 12.5vw;
+    }
+    #serveContainer, #openContainer {
+      margin-right: 12.5vw;
+    }
+    #bartWrapper {
+      width: 25vw;
+    }
+    .beerPic {
+      width: 6.8vw;
+      height: 7.78vw;
+    }
+  }
+
