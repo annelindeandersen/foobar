@@ -112,7 +112,7 @@ async function queueStarted() {
             if ( jsonData.queue == [] ) {
                 document.querySelector("#orderList").innerHTML = "Currently no orders";
             }
-            console.log("total: ", total);
+            // console.log("total: ", total);
 
             // lav til string og lav ny linje
             let strBeer = JSON.stringify(total, null, 1);
@@ -190,32 +190,39 @@ async function hours() {
     data = FooBar.getData();
     jsonData = JSON.parse(data);
 
+    document.querySelector("#hoursOpen").innerHTML = "",
+
     // store closing time i variable
-    const closeTime = jsonData.bar.closingTime;
-    console.log(closeTime);
-
+    // let closedTime = jsonData.bar.closingTime;
+    // console.log(closedTime);
+    
     // insert closing hours to HTML
-    document.querySelector("#closingTime").innerHTML = "Foo Bar serves no beer past: " + closeTime;
+    document.querySelector("#closingTime").innerHTML = "Foo Bar serves no beer past: " + jsonData.bar.closingTime;
     
-    let time = new Date();
-    console.log(time);
-    let toTime = time.toTimeString();
-    console.log(toTime);
-    let hours = time.getHours();
-    console.log(hours);
-    let min = time.getMinutes();
-    console.log(min);
-    let sec = time.getSeconds();
-    console.log(sec);
-    // let realTime = (((((timeNow/60)/60)/60)/24)/17694);
-    // console.log(realTime);
-    
-    let timeCalc = ( hours + ":" + min + ":" + sec);
-    let currentTime = timeCalc.toString("hh:mm:ss tt");
-    let timeNow = timeCalc;
-    let endTime = ("22:00:00");
+    // lukker klokken 22
+    let closeStr = jsonData.bar.closingTime.substr(0,2);
+    console.log(closeStr);
 
-    document.querySelector("#hoursOpen").innerHTML = "Time left to buy beers: ";
+    // tid nu
+    let time = new Date();
+    let timeNow = time.toLocaleTimeString();
+    let hours = time.getHours();
+    let min = time.getMinutes();
+    let sec = time.getSeconds();
+
+    //remaining time to 22
+    const s = 60;
+    let secLeft = s - sec;
+
+    const m = 60;
+    let minLeft = m - min;
+
+    const h = closeStr;
+    let hoursLeft = closeStr - hours;
+
+    let remainTime = (hoursLeft+"h "+minLeft+"m "+secLeft+"s");
+
+    document.querySelector("#hoursOpen").textContent = "Time left to buy beers: " + remainTime;
 }
 
 // refreshing queue every second
@@ -224,6 +231,7 @@ queueStarted();
 
 beerLoad();
 
+window.setInterval(hours, 1000);
 hours();
 
 // refresh bartender status every 10 seconds

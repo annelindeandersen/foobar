@@ -1,3 +1,4 @@
+/* GENERELLE TING */
 body {
   margin: 0;
   padding: 0;
@@ -22,7 +23,6 @@ h2 {
 /* HEADER */
 
 #titleContainer {
-  /* text-align: center; */
   background-image: url(/img/pexels-photo-459480.jpeg);
   background-size: cover;
   width: 100vw;
@@ -94,12 +94,10 @@ h1 {
 }
 
 .beerPic {
-  /* border: solid white; */
   width: 14.5vw;
   height: 16.5vw;
   margin-left: 0;
   cursor: pointer;
-  /* filter: drop-shadow(0 0 0.75rem black); */
 }
 
 .beerPic:hover {
@@ -132,6 +130,10 @@ h1 {
   cursor: pointer;
 }
 
+#close:hover {
+  filter: drop-shadow(0 0 0.75rem white);
+}
+
 #close2 {
   text-align: center;
   padding-bottom: 3vw;
@@ -139,11 +141,8 @@ h1 {
 }
 
 #BeerImg {
-  /* position: absolute;
-  bottom: 5vw; */
   margin: 4.5vw 0vw 0vw;
   height: 28vh;
-  /* filter: drop-shadow(0 0 0.75rem rgb(109, 100, 83)); */
 }
 
 #imgWrap {
@@ -153,7 +152,6 @@ h1 {
 
 #bottle {
   height: 35vh;
-  /* filter: drop-shadow(0 0 0.75rem rgb(109, 100, 83)); */
 }
 
 #BeerName {
@@ -201,7 +199,6 @@ h1 {
 /* BARTENDER & DAVE */
 
 #bartenderContainer, #openContainer {
-  /* display: grid; */
   text-align: center;
   background-color: #FFFFFF80;
   width: 80vw;
@@ -234,10 +231,6 @@ h1 {
   font-style: italic;
   margin: 0;
 }
-
-/* #daveContainer {
-  /* display: none; */
-/* } */ 
 
 #bartImg {
   background-color: rgb(226, 212, 188);
@@ -400,13 +393,15 @@ h1 {
     .beerPic {
       width: 8.2vw;
       height: 9.38vw;
-      /* margin-left: 0.5vw; */
     }
     #serveList, #orderList, #orderTitle {
       display: block;
     }
     #serveList, #orderList {
-      background-color: rgb(226, 212, 188);
+      /* background-color: rgb(226, 212, 188); */
+      background-image: url(/img/paper.png);
+      background-size: cover;
+      background-repeat: no-repeat;
       padding: 1vw 0 2vw;
       filter: drop-shadow(0 0 0.75rem rgb(128, 117, 100));
       width: 20vw;
@@ -502,7 +497,6 @@ h1 {
     .beerPic {
       width: 7.5vw;
       height: 8.58vw;
-      /* margin-left: 0.5vw; */
     }
   }
 
@@ -518,8 +512,8 @@ h1 {
       justify-content: space-evenly;
     }
     .beerPic {
-      height: 7vw;
-      width: 6.1vw;
+      height: 8.55vw;
+      width: 7.5vw;
     }
     #beerPicture {
       grid-row-gap: 0vw;
@@ -544,6 +538,34 @@ h1 {
     #dispBeer {
       height: 12vh;
     }
+    #serveList, #orderList {
+      width: 15vw;
+    }
   }
 
+  @media screen and (min-width: 1400px) {
+    #beerContainer {
+      width: 75vw;
+      margin: 0 12.5vw;
+    }
+    #grid {
+      width: 75vw;
+    }
+    #queueContainer, #serveContainer, #bartenderContainer, #openContainer {
+     width: 37vw;
+    }
+    #queueContainer, #bartenderContainer {
+      margin-left: 12.5vw;
+    }
+    #serveContainer, #openContainer {
+      margin-right: 12.5vw;
+    }
+    #bartWrapper {
+      width: 25vw;
+    }
+    .beerPic {
+      width: 6.8vw;
+      height: 7.78vw;
+    }
+  }
 
