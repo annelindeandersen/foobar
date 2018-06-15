@@ -11,9 +11,10 @@ body {
   display: grid;
   background-image: url(img/pexels-lysnet.jpg);
   background-size: cover;
-  height: 100%;
+  height: 100vh;
   width: 100vw;
   padding-bottom: 5vw;
+  overflow:scroll;
 }
 
 h2 {
@@ -23,7 +24,7 @@ h2 {
 /* HEADER */
 
 #titleContainer {
-  background-image: url(img/pexels-photo-459480.jpeg);
+  background-image: url(img/baggrund.jpg);
   background-size: cover;
   width: 100vw;
   display: flex;
@@ -35,7 +36,7 @@ h2 {
 h1 {
   font-family: 'Alfa Slab One';
   text-transform: uppercase;
-  font-size: 3.1em;
+  font-size: 3em;
   font-weight: 100;
   margin: 2vw;
   padding-right: 1vw;
@@ -44,9 +45,9 @@ h1 {
 
 #beerPour {
   background-image: url(img/beer-sprite-03.png);
-  height: 12vw;
-  width: 10.4vw;
-  background-size: 52.2vw;
+  height: 14vw;
+  width: 12.1vw;
+  background-size: 60.67vw;
   background-repeat: no-repeat;
   animation-name: pouring;
   animation-timing-function: steps(5);
@@ -64,12 +65,12 @@ h1 {
 
 @keyframes pouring {
   100% {
-    background-position: -52.2vw;
+    background-position: -60.67vw;
   }
 }
 @-webkit-keyframes pouring {
   100% {
-    background-position: -52.2vw;
+    background-position: -60.67vw;
   }
 }
 
@@ -106,12 +107,13 @@ h1 {
 /* BEER MODAL */
 
 #beerModal {
-  position: absolute;
-  background-image: url(img/pexels-photo-129733.jpeg);
+  position: fixed;
+  overflow: scroll;
+  background-image: url(img/baggrund.jpg);
   background-size: cover;
   z-index: 10;
   width: 80vw;
-  height: 215%;
+  height: 100vh;
   display: none;
   padding: 1vw 10vw;
   color: #FFF;
@@ -166,6 +168,7 @@ h1 {
   filter: drop-shadow(0 0 0.75rem rgb(63, 57, 48));
   width: 80vw;
   margin-left: -5vw;
+  margin-bottom: 6vw;
 }
 
 /* QUEUE & SERVING */
@@ -188,14 +191,18 @@ h1 {
   padding: 2.5vw;
   width: 20vw;
   height: 20vw;
-  margin-top: -1vw;
+  margin-top: -3vw;
+}
+
+#served {
+  margin-left: 1.5vw;
 }
 
 #serveList, #orderList, #orderTitle {
   display: none;
 }
 
-/* BARTENDER & DAVE */
+/* BARTENDER & HOURS */
 
 #bartenderContainer, #openContainer {
   text-align: center;
@@ -284,11 +291,15 @@ h1 {
 
 @media screen and (min-width: 600px) {
   #queue, #served {
-    font-size: 4.5em;
+    font-size: 4.8em;
     width: 12vw;
     padding: 1.5vw;
     height: 12vw;
+    margin-top: 0vw;
   }
+#served {
+  margin-left: 0vw;
+}
   h1 {
     font-size: 3.5em;
   }
@@ -297,14 +308,16 @@ h1 {
     width: auto;
     margin: 2.5vw 0vw;
   }
-  #beerModal {
-    height: 105%;
-  }
   .beers {
     margin-top: 10vw;
     padding: 5vw 5vw 0vw;
     width: 70vw;
     margin-left: 0;
+    margin-bottom: 10vw;
+  }
+  #close {
+    top: 2.5%;
+    left: 92%;
   }
   #close2 {
     display: none;
@@ -316,20 +329,36 @@ h1 {
   .beerPic {
     margin-left: 0.35vw;
   }
+  #beerPour {
+  height: 12vw;
+  width: 10.4vw;
+  background-size: 52.2vw;
+  }
+  @keyframes pouring {
+    100% {
+      background-position: -52.2vw;
+    }
+  }
+  @-webkit-keyframes pouring {
+    100% {
+      background-position: -52.2vw;
+    }
+  }
+  #bartImg {
+    width: 16vw;
+    height: 16vw;
+    margin-left: 17vw;
+  }
 }
 
   @media screen and (min-width: 1024px) {
-    #container {
-      height: 100%;
-      padding-bottom: 5vw;
-    }
     #titleContainer {
       background-position: top;
     }
     h1 {
-      font-size: 5em;
-      margin: 1vw;
-      padding-right: 0.5vw;
+      font-size: 4.2em;
+      margin: 0.5vw;
+      padding-right: 1vw;
     }
     #grid {
       width: 100vw;
@@ -454,6 +483,25 @@ h1 {
     #dispBeer {
       height: 12vh;
     }
+    #close {
+      top: 3%;
+      left: 94%;
+    }
+    #beerPour {
+      height: 10vw;
+      width: 8.63vw;
+      background-size: 43.13vw;
+    }
+    @keyframes pouring {
+      100% {
+        background-position: -43.13vw;
+      }
+    }
+    @-webkit-keyframes pouring {
+      100% {
+        background-position: -43.13vw;
+      }
+    }
   }
 
   @media screen and (min-width: 1200px) {
@@ -500,6 +548,10 @@ h1 {
     .beerPic {
       width: 7.5vw;
       height: 8.58vw;
+    }
+    .beerDisplay {
+      width: 30vw;
+      margin: 2vw 3vw 0;
     }
   }
 
@@ -574,6 +626,14 @@ h1 {
     .beerPic {
       width: 6.8vw;
       height: 7.78vw;
+      margin-left: -0.08vw;
+    }
+    .beerDisplay {
+      width: 27vw;
+      margin: 2vw 5vw 0;
+    }
+    #dispBeer{
+      height: 13vh;
     }
   }
 

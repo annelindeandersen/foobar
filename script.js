@@ -30,26 +30,16 @@ async function beerLoad() {
         clone.querySelector(".beerPic").addEventListener("click", (evt) => {
             let imgId = evt.currentTarget.dataset.id;
 
-            // variabler til at gemme info om øl til visning af modalvindue
-            const beerNavn = beerType.name;
-            const beerCat = beerType.category;
-            const beerPop = beerType.popularity;
-            const beerAlc = beerType.alc;
-            const beerImg = beerType.label;
-            const beerFlava = beerType.description.flavor;
-            const beerFeel = beerType.description.mouthfeel;
-            const beerImpress = beerType.description.overallImpression;
-
             // indholdet sættes ind i de deres plads i HTML
-            document.querySelector("#BeerName").textContent = beerNavn;
-            document.querySelector("#BeerImg").src = "img/" + beerImg;
-            document.querySelector("#bottle").src = "img/bottle-" + beerImg;
-            document.querySelector("#BeerCat").textContent = "Beer Type: " + beerCat;
-            document.querySelector("#BeerPopular").textContent = "Popularity: " + beerPop;
-            document.querySelector("#BeerAlc").textContent = "Alcohol Percentage: " + beerAlc + "%";
-            document.querySelector("#BeerFlava").textContent = "Flavor: " + beerFlava;
-            document.querySelector("#BeerFeel").textContent = "Mouthfeel: " + beerFeel;
-            document.querySelector("#BeerImpress").textContent = "General Impression: " + beerImpress;
+            document.querySelector("#BeerName").textContent = beerType.name;
+            document.querySelector("#BeerImg").src = "img/" + beerType.label;
+            document.querySelector("#bottle").src = "img/bottle-" + beerType.label;
+            document.querySelector("#BeerCat").textContent = "Beer Type: " + beerType.category;
+            document.querySelector("#BeerPopular").textContent = "Popularity: " + beerType.popularity;
+            document.querySelector("#BeerAlc").textContent = "Alcohol Percentage: " + beerType.alc + "%";
+            document.querySelector("#BeerFlava").textContent = "Flavor: " + beerType.description.flavor;
+            document.querySelector("#BeerFeel").textContent = "Mouthfeel: " + beerType.description.mouthfeel;
+            document.querySelector("#BeerImpress").textContent = "General Impression: " + beerType.description.overallImpression;
 
             // modal vindue vises, og container med indhold skjules. 
             document.querySelector("#beerModal").style.display = "block";
@@ -115,6 +105,7 @@ async function queueStarted() {
                 } 
                 count++;
                 total[beerType] = count;
+                console.log(total);
 
                 // lav til string og lav ny linje
                 let strBeer = JSON.stringify(total, null, 1);
@@ -230,11 +221,14 @@ async function hours() {
     const h = closeStr;
     let hoursLeft = closeStr - hours - 1;
     let remainTime = (hoursLeft+"h "+minLeft+"m "+secLeft+"s");
-
-    document.querySelector("#hoursOpen").textContent = "Time left to buy beers: " + remainTime;
+    
+    if ( hours >= 22 && hours < 24 ) {
+        document.querySelector("#hoursOpen").textContent = "Time left to buy beers: " + "Sorry we're closed.";
+    } else {
+        document.querySelector("#hoursOpen").textContent = "Time left to buy beers: " + remainTime;
+    }
 }
 
-// refreshing queue every second
 window.setInterval(queueStarted, 1000);
 queueStarted();
 
@@ -243,6 +237,5 @@ beerLoad();
 window.setInterval(hours, 1000);
 hours();
 
-// refresh bartender status every 10 seconds
 window.setInterval(bartenders, 10000);
 bartenders();

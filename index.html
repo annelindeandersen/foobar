@@ -45,59 +45,58 @@
         <div id="beerContainer">
         </div>
 
-        <div id="grid">
+            <div id="grid">
 
-        <div id="queueContainer">
-            <div class="wrapper">
-                <h2>Queue</h2>
-                <div id="queue" data-id=""></div>
-            </div>
-            <div class="wrapper">
-                <h2 id="orderTitle">Upcoming orders</h2>
-                <p id="orderList" data-id=""></p>
-                <p id="orderList2"></p>
-            </div>
-        </div>
-
-        <div id="serveContainer">
-                <div class="wrapper">
-                    <h2>Serving</h2>
-                    <div id="served" data-id=""></div>
+                <div id="queueContainer">
+                    <div class="wrapper">
+                        <h2>Queue</h2>
+                        <div id="queue" data-id=""></div>
+                    </div>
+                    <div class="wrapper">
+                        <h2 id="orderTitle">Upcoming orders</h2>
+                        <p id="orderList" data-id=""></p>
+                    </div>
                 </div>
-                <div class="wrapper">
-                    <h2 id="orderTitle">Pouring now</h2>
-                    <p id="serveList" data-id=""></p>
+
+                <div id="serveContainer">
+                        <div class="wrapper">
+                            <h2>Serving</h2>
+                            <div id="served" data-id=""></div>
+                        </div>
+                        <div class="wrapper">
+                            <h2 id="orderTitle">Pouring now</h2>
+                            <p id="serveList" data-id=""></p>
+                        </div>
+                </div>
+
+                <template id="bartenderTemplate">
+                    <div id="bartWrapper">
+                        <div id="bartImg" class=""></div>
+                        <p id="bartName"></p>
+                        <p id="bartStatus" data-id=""></p>
+                    </div>
+                </template>
+
+                <div id="bartenderContainer">
+                    <h2>Bartenders</h2>
+                    <p class="tenders" ></p>
+                    <ul id="bartenderList"></ul>
+                </div>
+
+                <div id="openContainer">
+                    <h2>Opening Hours</h2>
+                    <div id="closingTime"></div>
+                    <div id="hoursOpen"></div>
+                    <div class="beerDisplay">
+                        <img id="dispBeer" src="img/bottle-fairytaleale.png">
+                        <img id="dispBeer" src="img/bottle-elhefe.png">
+                        <img id="dispBeer" src="img/bottle-ruinedchildhood.png">
+                        <img id="dispBeer" src="img/bottle-hollaback.png">
+                        <img id="dispBeer" src="img/bottle-mowintime.png">
+                        <img id="dispBeer" src="img/bottle-sleighride.png">
+                    </div>
                 </div>
         </div>
-
-        <template id="bartenderTemplate">
-            <div id="bartWrapper">
-                <div id="bartImg" class=""></div>
-                <p id="bartName"></p>
-                <p id="bartStatus" data-id=""></p>
-            </div>
-        </template>
-
-        <div id="bartenderContainer">
-            <h2>Bartenders</h2>
-            <p class="tenders" ></p>
-            <ul id="bartenderList"></ul>
-        </div>
-
-        <div id="openContainer">
-            <h2>Opening Hours</h2>
-            <div id="closingTime"></div>
-            <div id="hoursOpen"></div>
-            <div class="beerDisplay">
-                <img id="dispBeer" src="img/bottle-fairytaleale.png">
-                <img id="dispBeer" src="img/bottle-elhefe.png">
-                <img id="dispBeer" src="img/bottle-ruinedchildhood.png">
-                <img id="dispBeer" src="img/bottle-hollaback.png">
-                <img id="dispBeer" src="img/bottle-mowintime.png">
-                <img id="dispBeer" src="img/bottle-sleighride.png">
-            </div>
-        </div>
-    </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="http://petlatkea.dk/2018/front/foobar.js"></script>
