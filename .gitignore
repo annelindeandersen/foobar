@@ -1,8 +1,2 @@
-sass
-node_modules
-package-lock.json
-package.json
-gammel-js.js
-css
-js
-README.md
+img/store-imgs
+store-imgs
